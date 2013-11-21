@@ -2,7 +2,7 @@
 ## Eclipse
 #################
 
-
+*.wav
 *.mp3
 *.pydevproject
 .project
