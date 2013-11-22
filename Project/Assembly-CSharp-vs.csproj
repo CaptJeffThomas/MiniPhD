@@ -47,7 +47,6 @@
      <Compile Include="Assets\EventManager.cs" />
      <Compile Include="Assets\HealthBar.cs" />
      <Compile Include="Assets\Scripts\CreateCube.cs" />
-     <Compile Include="Assets\Scripts\Credits.cs" />
      <Compile Include="Assets\Scripts\CreditsController.cs" />
      <Compile Include="Assets\Scripts\CustomAnimator.cs" />
      <Compile Include="Assets\Scripts\Doctor.cs" />
@@ -56,6 +55,7 @@
      <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\TextTrigger.cs" />
      <Compile Include="Assets\Scripts\Virus.cs" />
+     <None Include="Assets\Music\Sources.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
