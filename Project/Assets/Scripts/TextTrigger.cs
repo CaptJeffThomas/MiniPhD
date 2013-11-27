@@ -9,13 +9,14 @@ using System.IO;
 
 public class TextTrigger : MonoBehaviour{
 
-	public string windowTitle = "Mini PhD";
-	public string text = "Time if running out! We must purge the virus from Emily's system.";
+	public string windowTitle = "Title";
+	public string text = "Window Text";
 	public GUIStyle style;
 	
 
     private bool showText = true, trigger = false;
-    private float currentTime, startTime, timeToWait = 5.0f;
+    private float currentTime, startTime;
+	private float timeToWait = 5.0f;
 	
 	//public GameObject doc;
 	//private Doctor script;
@@ -35,7 +36,7 @@ public class TextTrigger : MonoBehaviour{
     void Update()    //if Text has not yet been triggered
     {
        
-
+	 
 	   if(trigger){
 			if(showText)
 			{
@@ -65,9 +66,12 @@ public class TextTrigger : MonoBehaviour{
     }
 	
 	
-	void OnTriggerEnter(){
-		trigger = true;
-		Debug.Log("Doctor entered TextTrigger1");
+	void OnTriggerEnter(Collider col){
+		if (col.gameObject.name == "Doctor")
+		{
+			startTime = Time.time;
+			trigger = true;
+		}
 	}
 	
 	void WindowConfig(int id){

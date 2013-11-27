@@ -10,6 +10,8 @@ public class Doctor : MonoBehaviour {
 	public bool mMoving; //whether the doctor is currently moving, used to fix minor animation problem
 	public bool mAttacking;
 	
+	public GameObject LaserBeam;
+	
 	Orientation mOrientation;
 	
 	Material mMaterial;
@@ -103,7 +105,7 @@ public class Doctor : MonoBehaviour {
 		
 		if(!mAttacking)
 		{
-			if(Input.GetKey(KeyCode.Space))
+			if(Input.GetKey(KeyCode.Space))  //Slashing our Sword
 			{
 				if(mOrientation == Orientation.LEFT)
 					mAnimator.PlayAnimation("Sword Left", false);
@@ -113,16 +115,33 @@ public class Doctor : MonoBehaviour {
 					mAnimator.PlayAnimation("Sword Up", false);
 				else if(mOrientation == Orientation.DOWN)
 					mAnimator.PlayAnimation("Sword Down", false);
-			}else if(Input.GetKey(KeyCode.E))
+			}else if(Input.GetKey(KeyCode.E)) //Firing our Gun
 			{
-				if(mOrientation == Orientation.LEFT)
+				GameObject lazer; 
+				if(mOrientation == Orientation.LEFT){
 					mAnimator.PlayAnimation("Gun Left", false);
-				else if(mOrientation == Orientation.RIGHT)
+					lazer = Instantiate(LaserBeam, transform.position, transform.rotation) as GameObject;
+					LazerBeam script = lazer.GetComponent("LazerBeam") as LazerBeam;
+					script.setDirection(Vector3.left);
+				}	
+				else if(mOrientation == Orientation.RIGHT){
 					mAnimator.PlayAnimation("Gun Right", false);
-				else if(mOrientation == Orientation.UP)
+					lazer = Instantiate(LaserBeam, transform.position, transform.rotation) as GameObject;
+					LazerBeam script = lazer.GetComponent("LazerBeam") as LazerBeam;
+					script.setDirection(Vector3.right);
+				}	
+				else if(mOrientation == Orientation.UP){
 					mAnimator.PlayAnimation("Gun Up", false);
-				else if(mOrientation == Orientation.DOWN)
+					lazer = Instantiate(LaserBeam, transform.position, transform.rotation) as GameObject;
+					LazerBeam script = lazer.GetComponent("LazerBeam") as LazerBeam;
+					script.setDirection(Vector3.up);
+				}
+				else if(mOrientation == Orientation.DOWN){
 					mAnimator.PlayAnimation("Gun Down", false);
+					lazer = Instantiate(LaserBeam, transform.position, transform.rotation) as GameObject;
+					LazerBeam script = lazer.GetComponent("LazerBeam") as LazerBeam;
+					script.setDirection(Vector3.down);
+				}
 			}
 		}
 		if(mAnimator.IsRunning("Sword Right") || mAnimator.IsRunning("Sword Left") || mAnimator.IsRunning("Sword Up") || 
