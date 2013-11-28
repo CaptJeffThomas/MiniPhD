@@ -122,19 +122,25 @@ public class Doctor : MonoBehaviour {
 					mAnimator.PlayAnimation("Gun Left", false);
 					lazer = Instantiate(LaserBeam, transform.position, transform.rotation) as GameObject;
 					LazerBeam script = lazer.GetComponent("LazerBeam") as LazerBeam;
-					script.setDirection(Vector3.left);
+					lazer.transform.localEulerAngles = new Vector3(0,0,-90);
+					script.setDirection(Vector3.down);
+					
 				}	
 				else if(mOrientation == Orientation.RIGHT){
 					mAnimator.PlayAnimation("Gun Right", false);
 					lazer = Instantiate(LaserBeam, transform.position, transform.rotation) as GameObject;
 					LazerBeam script = lazer.GetComponent("LazerBeam") as LazerBeam;
-					script.setDirection(Vector3.right);
+					lazer.transform.localEulerAngles = new Vector3(0,0,90);
+					script.setDirection(Vector3.down);
+					
 				}	
 				else if(mOrientation == Orientation.UP){
 					mAnimator.PlayAnimation("Gun Up", false);
 					lazer = Instantiate(LaserBeam, transform.position, transform.rotation) as GameObject;
 					LazerBeam script = lazer.GetComponent("LazerBeam") as LazerBeam;
-					script.setDirection(Vector3.up);
+					lazer.transform.localEulerAngles = new Vector3(0,0,180);
+					script.setDirection(Vector3.down);
+					
 				}
 				else if(mOrientation == Orientation.DOWN){
 					mAnimator.PlayAnimation("Gun Down", false);

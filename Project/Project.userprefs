@@ -1,9 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MainMenuController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Doctor.cs">
     <Files>
+      <File FileName="Assets\Scripts\Doctor.cs" Line="95" Column="55" />
       <File FileName="Assets\Scripts\MainMenuController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CustomEventManager.cs" Line="57" Column="25" />
+      <File FileName="Assets\Scripts\CustomEventManager.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
