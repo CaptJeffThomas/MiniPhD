@@ -18,6 +18,8 @@ public class Doctor : MonoBehaviour {
 	
 	CustomAnimator mAnimator;
 	
+	private CustomEventManager eventMan;
+	
 	// Use this for initialization
 	void Start () {
 		
@@ -28,6 +30,9 @@ public class Doctor : MonoBehaviour {
 		mAttacking = false;
 		
 		mMaterial = renderer.material;
+		
+		eventMan = GameObject.Find("Global Script Executor").GetComponent<CustomEventManager>();
+		eventMan.EventListeners += RecieveEvent;
 		
 		mAnimator = new CustomAnimator(ref mMaterial, 6, 4);
 		
@@ -54,6 +59,8 @@ public class Doctor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
+		rigidbody.velocity = new Vector3(0,0,0);
 		
 		if(!mAttacking)
 		{
@@ -162,6 +169,11 @@ public class Doctor : MonoBehaviour {
 		
 		
 		mAnimator.Update(Time.deltaTime);
+		
+	}
+	
+	void RecieveEvent(CustomEvent evt)
+	{
 		
 	}
 }

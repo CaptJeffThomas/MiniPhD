@@ -1,10 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Doctor.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Red Virus.cs">
     <Files>
-      <File FileName="Assets\Scripts\Doctor.cs" Line="95" Column="55" />
+      <File FileName="..\..\..\..\Desktop\MiniPhD\Project\Assets\Scripts\Doctor.cs" Line="33" Column="33" />
+      <File FileName="..\..\..\..\Desktop\MiniPhD\Project\Assets\Scripts\Virus.cs" Line="164" Column="4" />
+      <File FileName="Assets\Scripts\Doctor.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MainMenuController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CustomEventManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\LazerBeam.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Green Virus.cs" Line="19" Column="5" />
+      <File FileName="Assets\Scripts\Blue Virus.cs" Line="19" Column="5" />
+      <File FileName="Assets\Scripts\Red Virus.cs" Line="18" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
