@@ -61,7 +61,9 @@
      <Compile Include="Assets\Scripts\Scene1Speech2.cs" />
      <Compile Include="Assets\Scripts\Scene1Tutorial1.cs" />
      <Compile Include="Assets\Scripts\Scene1Tutorial2.cs" />
+     <Compile Include="Assets\Scripts\StoryScreen.cs" />
      <Compile Include="Assets\Scripts\TextTrigger.cs" />
+     <Compile Include="Assets\Scripts\Walls.cs" />
      <None Include="Assets\Music\Sources.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
