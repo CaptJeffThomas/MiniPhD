@@ -10,7 +10,7 @@ public class Walls : MonoBehaviour
 		}
 	
 	
-		void onCollisionEnter(Collision col){
+		void OnCollisionEnter(Collision col){
 		
 			if (col.gameObject.name == "LazerBeam")
 			{

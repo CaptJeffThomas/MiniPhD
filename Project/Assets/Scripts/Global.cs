@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 /*anything that should be done on a global scale should go here*/
@@ -8,7 +8,7 @@ public class Global : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
-		Random.seed = 10; //initialize the random number generator for all classes
+		//Random.seed = (int)System.Environment.TickCount; //initialize the random number generator for all classes
 		
 	}
 	

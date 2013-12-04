@@ -1,16 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LazerBeam.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BlueVirus.cs">
     <Files>
+      <File FileName="Assets\Scripts\BlueVirus.cs" Line="202" Column="20" />
+      <File FileName="Assets\Scripts\RedVirus.cs" Line="178" Column="28" />
+      <File FileName="Assets\Scripts\GreenVirus.cs" Line="204" Column="20" />
       <File FileName="Assets\Scripts\LazerBeam.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\StoryScreen.cs" Line="14" Column="66" />
+      <File FileName="Assets\Scripts\CreditsController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Global.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Walls.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Doctor.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\StoryScreen.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MainMenuController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CustomEventManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Green Virus.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Blue Virus.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Red Virus.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Walls.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

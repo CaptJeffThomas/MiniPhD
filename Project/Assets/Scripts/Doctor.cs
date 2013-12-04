@@ -23,8 +23,8 @@ public class Doctor : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
-		movSpeedX = 75.0f;
-		movSpeedY = 75.0f;
+		movSpeedX = 150.0f;
+		movSpeedY = 150.0f;
 		
 		mMoving = false;
 		mAttacking = false;
@@ -48,10 +48,10 @@ public class Doctor : MonoBehaviour {
 		mAnimator.CreateAnimation("Sword Right", 15, 16, 0.2);
 		mAnimator.CreateAnimation("Sword Up", 21, 22, 0.2);
 		mAnimator.CreateAnimation("Sword Down", 3, 4, 0.2);
-		mAnimator.CreateAnimation("Gun Down", 5, 5, 1);
-		mAnimator.CreateAnimation("Gun Left", 11, 11, 1);
-		mAnimator.CreateAnimation("Gun Right", 17, 17, 1);
-		mAnimator.CreateAnimation("Gun Up", 23, 23, 1);
+		mAnimator.CreateAnimation("Gun Down", 5, 5, 0.3);
+		mAnimator.CreateAnimation("Gun Left", 11, 11, 0.3);
+		mAnimator.CreateAnimation("Gun Right", 17, 17, 0.3);
+		mAnimator.CreateAnimation("Gun Up", 23, 23, 0.3);
 		
 		mAnimator.PlayAnimation("Standing Right", false);
 		
@@ -112,22 +112,50 @@ public class Doctor : MonoBehaviour {
 		
 		if(!mAttacking)
 		{
-			if(Input.GetKey(KeyCode.Space))  //Slashing our Sword
+			if(Input.GetKey(KeyCode.Space))
 			{
+				CustomEvent evt = new CustomEvent("Sword Attack");
+				
 				if(mOrientation == Orientation.LEFT)
+				{
 					mAnimator.PlayAnimation("Sword Left", false);
-				else if(mOrientation == Orientation.RIGHT)
+					
+					evt.AddParam((int)transform.position.x - 64);
+					evt.AddParam((int)transform.position.y);
+					
+				}else if(mOrientation == Orientation.RIGHT)
+				{
 					mAnimator.PlayAnimation("Sword Right", false);
-				else if(mOrientation == Orientation.UP)
+					
+					evt.AddParam((int)transform.position.x + 64);
+					evt.AddParam((int)transform.position.y);
+					
+				}else if(mOrientation == Orientation.UP)
+				{
 					mAnimator.PlayAnimation("Sword Up", false);
-				else if(mOrientation == Orientation.DOWN)
+					
+					evt.AddParam((int)transform.position.x);
+					evt.AddParam((int)transform.position.y + 64);
+					
+				}else if(mOrientation == Orientation.DOWN)
+				{
 					mAnimator.PlayAnimation("Sword Down", false);
+					
+					evt.AddParam((int)transform.position.x);
+					evt.AddParam((int)transform.position.y - 64);
+					
+				}
+				
+				evt.AddParam(1); //add attack damage
+				eventMan.PostEvent(evt);
+				
+				
 			}else if(Input.GetKey(KeyCode.E)) //Firing our Gun
 			{
 				GameObject lazer; 
 				if(mOrientation == Orientation.LEFT){
 					mAnimator.PlayAnimation("Gun Left", false);
-					lazer = Instantiate(LaserBeam, transform.position, transform.rotation) as GameObject;
+					lazer = Instantiate(LaserBeam, new Vector3(transform.position.x - 50,transform.position.y,7.2f), transform.rotation) as GameObject;
 					LazerBeam script = lazer.GetComponent("LazerBeam") as LazerBeam;
 					lazer.transform.localEulerAngles = new Vector3(0,0,-90);
 					script.setDirection(Vector3.down);
@@ -135,7 +163,7 @@ public class Doctor : MonoBehaviour {
 				}	
 				else if(mOrientation == Orientation.RIGHT){
 					mAnimator.PlayAnimation("Gun Right", false);
-					lazer = Instantiate(LaserBeam, transform.position, transform.rotation) as GameObject;
+					lazer = Instantiate(LaserBeam, new Vector3(transform.position.x + 50,transform.position.y,7.2f), transform.rotation) as GameObject;
 					LazerBeam script = lazer.GetComponent("LazerBeam") as LazerBeam;
 					lazer.transform.localEulerAngles = new Vector3(0,0,90);
 					script.setDirection(Vector3.down);
@@ -143,7 +171,7 @@ public class Doctor : MonoBehaviour {
 				}	
 				else if(mOrientation == Orientation.UP){
 					mAnimator.PlayAnimation("Gun Up", false);
-					lazer = Instantiate(LaserBeam, transform.position, transform.rotation) as GameObject;
+					lazer = Instantiate(LaserBeam, new Vector3(transform.position.x,transform.position.y + 50,7.2f), transform.rotation) as GameObject;
 					LazerBeam script = lazer.GetComponent("LazerBeam") as LazerBeam;
 					lazer.transform.localEulerAngles = new Vector3(0,0,180);
 					script.setDirection(Vector3.down);
@@ -151,7 +179,7 @@ public class Doctor : MonoBehaviour {
 				}
 				else if(mOrientation == Orientation.DOWN){
 					mAnimator.PlayAnimation("Gun Down", false);
-					lazer = Instantiate(LaserBeam, transform.position, transform.rotation) as GameObject;
+					lazer = Instantiate(LaserBeam, new Vector3(transform.position.x,transform.position.y - 50,7.2f), transform.rotation) as GameObject;
 					LazerBeam script = lazer.GetComponent("LazerBeam") as LazerBeam;
 					script.setDirection(Vector3.down);
 				}
