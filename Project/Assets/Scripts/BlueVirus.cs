@@ -20,6 +20,7 @@ public class BlueVirus : MonoBehaviour {
 	Orientation mOrientation;
 	
 	Material mMaterial;
+	public AudioClip sound;  //holds deathNoise
 	
 	void Start(){
 		alive = true;
@@ -61,7 +62,7 @@ public class BlueVirus : MonoBehaviour {
 		
 	}
 	
-	//controls Virus spread mechanic.
+	//controls Virus movement
 	void Update(){
 		currentTime = Time.time;	
 		if(currentTime - startTime > spreadThreshold){
@@ -125,14 +126,15 @@ public class BlueVirus : MonoBehaviour {
 	}
 	
 	//upon trigger entry by a bullet, the virus takes dmg and bullet is destroyed
-	void OnTriggerEnter(Collider col ){  
+	/*void OnTriggerEnter(Collider col ){  
 		if (col.gameObject.name == "LazerBeam")
 		{
-			//takeDamage(RANGED, 1);
+			takeDamage((int)ATTACK_TYPE.RANGED, 1);
 			Destroy(col);
 		}
 		
-	}
+	} */
+	
 	void OnCollisionEnter(Collision col){
 		if (col.gameObject.name == "Wall"){
 			
@@ -144,7 +146,7 @@ public class BlueVirus : MonoBehaviour {
 	
 	public void takeDamage(int dmgType, int dmg){
 		if (alive){
-			if (dmgType == 1){
+			if (dmgType == (int)ATTACK_TYPE.RANGED){
 				
 				hp = hp - dmg;
 			}
@@ -163,6 +165,9 @@ public class BlueVirus : MonoBehaviour {
 		rigidbody.velocity = new Vector3(0,0,0);
 		xv = 0;
 		yv = 0;	
+		
+		audio.PlayOneShot(sound);
+		
 		if(mOrientation == Orientation.LEFT)
 		{
 			mAnimator.PlayAnimation("Dead Left", false);
@@ -201,7 +206,7 @@ public class BlueVirus : MonoBehaviour {
 			
 			if(distance < 28.0f)
 			{
-				this.takeDamage(/*(int)ATTACK_TYPE.MELEE*/1, evt.GetParam(2));
+				this.takeDamage(/*(int)ATTACK_TYPE.MELEE*/0, evt.GetParam(2));
 			}
 		}else if(evt.GetEventName() == "Spread")
 		{

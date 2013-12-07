@@ -19,6 +19,7 @@ public class Doctor : MonoBehaviour {
 	CustomAnimator mAnimator;
 	
 	private CustomEventManager eventMan;
+	public AudioClip swordSwing;
 	
 	// Use this for initialization
 	void Start () {
@@ -115,6 +116,7 @@ public class Doctor : MonoBehaviour {
 			if(Input.GetKey(KeyCode.Space))
 			{
 				CustomEvent evt = new CustomEvent("Sword Attack");
+				audio.PlayOneShot(swordSwing);
 				
 				if(mOrientation == Orientation.LEFT)
 				{

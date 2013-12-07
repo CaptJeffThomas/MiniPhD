@@ -21,7 +21,7 @@ public class Scene1Speech2 : MonoBehaviour{
 	//public GameObject doc;
 	//private Doctor script;
 	
-	Rect windowRect = new Rect(Screen.width * .4f, Screen.height * .5f, Screen.width * .2f, Screen.height * 0.15f);
+	Rect windowRect = new Rect(Screen.width * .4f, Screen.height * .5f, Screen.width * .1f, Screen.height * 0.05f);
    
   
 	   

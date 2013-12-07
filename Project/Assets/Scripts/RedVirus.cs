@@ -20,6 +20,7 @@ public class RedVirus : MonoBehaviour {
 	Orientation mOrientation;
 	
 	Material mMaterial;
+	public AudioClip sound;  //holds deathNoise
 		
 	void Start(){
 		
@@ -120,14 +121,15 @@ public class RedVirus : MonoBehaviour {
 	}
 	
 	//upon trigger entry by a bullet, the virus takes dmg and bullet is destroyed
-	void OnTriggerEnter(Collider col ){  
+	/*void OnTriggerEnter(Collider col ){  
 		if (col.gameObject.name == "LazerBeam")
 		{
-			takeDamage(2, 1);
+			//take no DMG as red virii are impervious to lazer dmg
 			Destroy(col);
 		}
 		
-	}
+	} */
+	
 	void OnCollisionEnter(Collision col){
 		if (col.gameObject.name == "Wall"){
 			
@@ -141,7 +143,7 @@ public class RedVirus : MonoBehaviour {
 	
 	public void takeDamage(int dmgType, int dmg){
 		if (alive){
-			if (dmgType == 2){
+			if (dmgType == (int)ATTACK_TYPE.MELEE){
 				hp = hp - dmg;
 			}
 		
@@ -156,6 +158,9 @@ public class RedVirus : MonoBehaviour {
 		rigidbody.velocity = new Vector3(0,0,0);
 		xv = 0;
 		yv = 0;	
+		
+		audio.PlayOneShot(sound);
+		
 		if(mOrientation == Orientation.LEFT)
 		{
 			mAnimator.PlayAnimation("Dead Left", false);

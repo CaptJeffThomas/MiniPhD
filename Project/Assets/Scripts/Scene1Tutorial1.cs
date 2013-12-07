@@ -16,19 +16,18 @@ public class Scene1Tutorial1 : MonoBehaviour{
 
     private bool showText = true, trigger = false;
     private float currentTime, startTime;
-	private float timeToWait = 4.0f;
+	private float timeToWait = 3.0f;
 	
 	//public GameObject doc;
 	//private Doctor script;
 	
-	Rect windowRect = new Rect(Screen.width * .4f, Screen.height * .5f, Screen.width * .2f, Screen.height * 0.15f);
+	Rect windowRect = new Rect(Screen.width * .4f, Screen.height * .5f, Screen.width * .1f, Screen.height * 0.1f);
    
   
 	   
 	void OnStart ()
 	{
-		//doc = GameObject.Find("Doctor");
-		//script = doc.GetComponent<Doctor>();
+		
 
 	}
 	
@@ -47,7 +46,7 @@ public class Scene1Tutorial1 : MonoBehaviour{
 					trigger = false;
 					showText = false;     //disable text and do not show text again.
 					
-					//script.enabled = true;
+				
 				}
 			}
 	   }
@@ -61,7 +60,7 @@ public class Scene1Tutorial1 : MonoBehaviour{
 				
 				windowRect = GUI.Window (0, windowRect, WindowConfig, windowTitle);
 				
-				//script.enabled = false;
+			
 			}	
 		}		
     }

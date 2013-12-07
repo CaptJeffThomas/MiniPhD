@@ -22,6 +22,7 @@ public class GreenVirus : MonoBehaviour {
 	Orientation mOrientation;
 	
 	Material mMaterial;
+	public AudioClip sound;  //holds deathNoise
 	
 	void Start(){
 		alive = true;
@@ -124,7 +125,7 @@ public class GreenVirus : MonoBehaviour {
 	
 	
 	//upon trigger entry by a bullet, the virus takes dmg and bullet is destroyed
-	void OnTriggerEnter(Collider col ){  
+	/* void OnTriggerEnter(Collider col ){  
 		if (col.gameObject.name == "LazerBeam")
 		{
 			
@@ -132,7 +133,7 @@ public class GreenVirus : MonoBehaviour {
 			Destroy(col);
 		}
 		
-	}
+	} */
 	
 	
 	public void takeDamage(int dmgType, int dmg){
@@ -149,6 +150,9 @@ public class GreenVirus : MonoBehaviour {
 		rigidbody.velocity = new Vector3(0,0,0);
 		xv = 0;
 		yv = 0;	
+		
+		audio.PlayOneShot(sound);
+		
 		if(mOrientation == Orientation.LEFT)
 		{
 			mAnimator.PlayAnimation("Dead Left", false);

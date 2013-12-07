@@ -10,18 +10,19 @@ using System.IO;
 public class Scene1Speech1 : MonoBehaviour{
 
 	public string windowTitle = "Mini PhD";
-	public string text = "Time if running out! We must purge the virus from Emily's system.";
+	public string text = "Time if running out! We must purge the virus from Valerie's system.";
 	public GUIStyle style;
+	public AudioClip sound; //triggers level 1 music.
 	
 
     private bool showText = true, trigger = false;
     private float currentTime, startTime;
-	private float timeToWait = 5.0f;
+	private float timeToWait = 3.0f;
 	
 	//public GameObject doc;
 	//private Doctor script;
 	
-	Rect windowRect = new Rect(Screen.width * .4f, Screen.height * .5f, Screen.width * .2f, Screen.height * 0.15f);
+	Rect windowRect = new Rect(Screen.width * .4f, Screen.height * .5f, Screen.width * .1f, Screen.height * 0.10f);
    
   
 	   
@@ -44,10 +45,10 @@ public class Scene1Speech1 : MonoBehaviour{
 				if(currentTime - startTime > timeToWait)
 				{
 					
+					audio.Play();
 					trigger = false;
 					showText = false;     //disable text and do not show text again.
-					
-					//script.enabled = true;
+
 				}
 			}
 	   }
@@ -59,8 +60,7 @@ public class Scene1Speech1 : MonoBehaviour{
         if(trigger){
 			if(showText){
 				windowRect = GUI.Window (0, windowRect, WindowConfig, windowTitle);
-				
-				//script.enabled = false;
+
 			}	
 		}		
     }
@@ -71,6 +71,7 @@ public class Scene1Speech1 : MonoBehaviour{
 		{
 			startTime = Time.time;
 			trigger = true;
+		
 			
 		}
 	}

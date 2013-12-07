@@ -10,18 +10,18 @@ using System.IO;
 public class Scene1Tutorial2 : MonoBehaviour{
 
 	public string windowTitle = "Tutorial";
-	public string text = "Press the E key to cleave the virus with InsertCoolSwordName";
+	public string text = "Press the Space Bar to cleave the virus with the Extradimensional NanoBlade.";
 	public GUIStyle style;
 	
 
     private bool showText = true, trigger = false;
     private float currentTime, startTime;
-	private float timeToWait = 4.0f;
+	private float timeToWait = 3.0f;
 	
 	//public GameObject doc;
 	//private Doctor script;
 	
-	Rect windowRect = new Rect(Screen.width * .4f, Screen.height * .5f, Screen.width * .2f, Screen.height * 0.15f);
+	Rect windowRect = new Rect(Screen.width * .4f, Screen.height * .5f, Screen.width * .1f, Screen.height * 0.1f);
    
   
 	   

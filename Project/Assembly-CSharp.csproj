@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\CustomAnimator.cs" />
      <Compile Include="Assets\Scripts\CustomEventManager.cs" />
      <Compile Include="Assets\Scripts\Doctor.cs" />
+     <Compile Include="Assets\Scripts\EndingScreen.cs" />
      <Compile Include="Assets\Scripts\Global.cs" />
      <Compile Include="Assets\Scripts\GreenVirus.cs" />
      <Compile Include="Assets\Scripts\HealthBar.cs" />
@@ -61,6 +62,8 @@
      <Compile Include="Assets\Scripts\Scene1Speech2.cs" />
      <Compile Include="Assets\Scripts\Scene1Tutorial1.cs" />
      <Compile Include="Assets\Scripts\Scene1Tutorial2.cs" />
+     <Compile Include="Assets\Scripts\Scene2Tutorial1.cs" />
+     <Compile Include="Assets\Scripts\Scene3Tutorial1.cs" />
      <Compile Include="Assets\Scripts\StoryScreen.cs" />
      <Compile Include="Assets\Scripts\TextTrigger.cs" />
      <Compile Include="Assets\Scripts\Walls.cs" />

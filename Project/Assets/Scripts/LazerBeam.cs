@@ -23,10 +23,10 @@ public class LazerBeam : MonoBehaviour {
 	
 	void Start(){
 	
-	
+		audio.PlayOneShot(sound);
 		lazerSpeed = 600;
 		trans = transform;
-		audio.PlayOneShot(sound);
+		
 
 	}
 	
@@ -50,18 +50,18 @@ public class LazerBeam : MonoBehaviour {
 		}
 		else if (col.gameObject.name == "BlueVirus"){
 			Debug.Log ("IMA FIREING MY Blue");
+			bVirus = col.gameObject.GetComponent<BlueVirus>();
+			bVirus.takeDamage (1,1);
 			Destroy (gameObject);
 		}
 		else if (col.gameObject.name == "RedVirus"){
 			Debug.Log ("IMA FIREING MY red");
-			rVirus = col.gameObject.GetComponent<RedVirus>();
-			rVirus.takeDamage (2,1);
 			Destroy (gameObject);
 		}
 		else if (col.gameObject.name == "GreenVirus"){
 			Debug.Log ("IMA FIREING MY green");
 			gVirus = col.gameObject.GetComponent<GreenVirus>();
-			gVirus.takeDamage (2,1);
+			gVirus.takeDamage (1,1);
 			Destroy (gameObject);
 		}
 	}
