@@ -56,14 +56,14 @@ public class BossScript : MonoBehaviour {
 		{
 			colorTimer += Time.deltaTime;
 			
-			if(hp > 10 && colorTimer > 6.0f)
+			if(hp > 35 && colorTimer > 6.0f)
 			{
 				colorTimer -= 6.0f;
 				
 				int color = Random.Range(0, 3);
 				currentColor = (ColorValue)color;
 				
-			}else if(hp > 5 && colorTimer > 4.0f)
+			}else if(hp > 20 && colorTimer > 4.0f)
 			{
 				colorTimer -= 4.0f;
 				

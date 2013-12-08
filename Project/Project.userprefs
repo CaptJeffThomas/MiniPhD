@@ -1,18 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Doctor.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BossScript.cs">
     <Files>
       <File FileName="Assets\Scripts\Doctor.cs" Line="212" Column="3" />
-      <File FileName="Assets\Scripts\BossScript.cs" Line="46" Column="54" />
+      <File FileName="Assets\Scripts\BossScript.cs" Line="68" Column="24" />
       <File FileName="Assets\Scripts\Scene1Speech1.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Scene3Tutorial1.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Scene1Tutorial1.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Scene1Tutorial2.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Scene2Tutorial1.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Global.cs" Line="59" Column="3" />
+      <File FileName="Assets\Scripts\Global.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BlueVirus.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\RedVirus.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GreenVirus.cs" Line="38" Column="43" />
+      <File FileName="Assets\Scripts\GreenVirus.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\EndingScreen.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Scene1Speech2.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\LazerBeam.cs" Line="1" Column="1" />
@@ -20,15 +20,7 @@
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="Doctor.cs" selected="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
+        <State expanded="True" />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
