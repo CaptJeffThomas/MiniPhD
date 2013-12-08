@@ -3,11 +3,12 @@ using System.Collections;
 
 public class HealthBar : MonoBehaviour {
 	
-	private int TIMER_INC;
+	private int TIMER_INC, overFlag;
 	private Material mMaterial;
 	
 	private CustomAnimator mAnimator;
 	public float timer;
+	public AudioClip gameOverSound;
 	
 	private CustomEventManager eventMan;
 	
@@ -15,6 +16,7 @@ public class HealthBar : MonoBehaviour {
 	void Start () {
 		timer = 0.0f;
 		TIMER_INC = 6;
+		overFlag = 0;
 		
 		eventMan = GameObject.Find("Global Script Executor").GetComponent<CustomEventManager>();
 		
@@ -119,6 +121,10 @@ public class HealthBar : MonoBehaviour {
 		}
 		else if (timer >=TIMER_INC*21){
 			mAnimator.PlayAnimation ("0", true);
+			if(overFlag == 0){
+				audio.PlayOneShot(gameOverSound);
+				overFlag = 1;
+			}
 			eventMan.PostEvent(new CustomEvent("Time Up"));
 		}
 		

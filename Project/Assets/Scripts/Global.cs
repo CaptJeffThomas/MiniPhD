@@ -6,7 +6,7 @@ using System.Collections;
 public class Global : MonoBehaviour
 {
 	
-	int level, count, end;
+	int level, count, end, gameOver;
 	GameObject[] reds, greens, blues, boss;
 	Rect windowRect = new Rect(Screen.width * .4f, Screen.height * .5f, Screen.width * .15f, Screen.height * 0.05f);
 	
@@ -20,6 +20,7 @@ public class Global : MonoBehaviour
 		
 		level = Application.loadedLevel;
 		end = 1;
+		gameOver = 0;
 		
 		eventMan = GameObject.Find("Global Script Executor").GetComponent<CustomEventManager>();
 		eventMan.EventListeners += ReceiveEvent;
@@ -45,16 +46,19 @@ public class Global : MonoBehaviour
 				end = 0;
 				audio.PlayOneShot(sound);
 				StartCoroutine(pause());
+				
 			}
 		}
 	}
 	
-	public void ReceiveEvent(CustomEvent evt)
+	public void ReceiveEvent(CustomEvent evt)  //Handles failure state
 	{
 		if(evt.GetEventName() == "Time Up")
 		{
 			//game over
-			Application.LoadLevel(0);
+			gameOver = 1;
+			StartCoroutine(pause());
+			
 		}
 	}	
 				
@@ -62,17 +66,25 @@ public class Global : MonoBehaviour
     {
         if(count == 0)
 			windowRect = GUI.Window (0, windowRect, WindowConfig, "Mini PhD");
-			
+		if(gameOver == 1)
+			windowRect = GUI.Window (0, windowRect, WindowConfig, "");
+		
     }
 	
 	
 	IEnumerator pause(){
+		
 		yield return new WaitForSeconds(10);
-		Application.LoadLevel(level + 1);
+		if(end == 0) 
+			Application.LoadLevel(level + 1);     // we have won the level, move forward
+		else
+			Application.LoadLevel("MainMenu");  // we have lost the level , back to main menu
 	}
 	
 	void WindowConfig(int id){
-		if(level != 4)
+		if(gameOver == 1)
+			GUILayout.Label("Valerie has died.  GAME OVER.");
+		else if(level != 4)
 			GUILayout.Label("Everything is clear! Time to move ahead.");
 		else
 			GUILayout.Label("All the viruses have been purged!");
