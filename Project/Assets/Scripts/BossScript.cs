@@ -21,6 +21,8 @@ public class BossScript : MonoBehaviour {
 	
 	Material mMaterial;
 	
+	public AudioClip deathGrowl;
+	
 	// Use this for initialization
 	void Start () {
 		
@@ -152,6 +154,8 @@ public class BossScript : MonoBehaviour {
 		rigidbody.velocity = new Vector3(0,0,0);
 		
 		mAnimator.PlayAnimation("Death", false);
+		
+		audio.PlayOneShot(deathGrowl);
 		
 		alive = false;
 		

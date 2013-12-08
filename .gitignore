@@ -18,6 +18,8 @@ local.properties
 .settings/
 .loadpath
 
+Library/
+
 # External tool builders
 .externalToolBuilders/
 
