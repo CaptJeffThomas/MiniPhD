@@ -196,25 +196,17 @@ public class GreenVirus : MonoBehaviour {
 	{
 		if(evt.GetEventName() == "Sword Attack")
 		{
-			Debug.Log ("SLASH green");
+			
 			int evtX, evtY, x, y;
 			evtX = evt.GetParam(0);
 			evtY = evt.GetParam(1);
-			x = (int)transform.position.x;
-			y = (int)transform.position.y;
 			
 			float distance = Vector3.Distance(transform.position, new Vector3(evtX, evtY, 0.0f));
 			
-			if(distance < 28.0f)
+			if(distance < 40.0f)
 			{
 				this.takeDamage((int)ATTACK_TYPE.MELEE, evt.GetParam(2));
 			}
-		}else if(evt.GetEventName () == "Gun Attack")
-		{
-			
-		}else if(evt.GetEventName() == "Spread")
-		{
-			
 		}
 	}
    

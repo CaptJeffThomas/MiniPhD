@@ -9,11 +9,14 @@ public class HealthBar : MonoBehaviour {
 	private CustomAnimator mAnimator;
 	public float timer;
 	
+	private CustomEventManager eventMan;
+	
 	// Use this for initialization
 	void Start () {
 		timer = 0.0f;
-		TIMER_INC = 1;
+		TIMER_INC = 6;
 		
+		eventMan = GameObject.Find("Global Script Executor").GetComponent<CustomEventManager>();
 		
 		mMaterial = renderer.material;
 		
@@ -116,6 +119,7 @@ public class HealthBar : MonoBehaviour {
 		}
 		else if (timer >=TIMER_INC*21){
 			mAnimator.PlayAnimation ("0", true);
+			eventMan.PostEvent(new CustomEvent("Time Up"));
 		}
 		
 		

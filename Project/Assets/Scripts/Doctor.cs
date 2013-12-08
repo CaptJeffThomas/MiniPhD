@@ -21,6 +21,14 @@ public class Doctor : MonoBehaviour {
 	private CustomEventManager eventMan;
 	public AudioClip swordSwing;
 	
+	private BlueVirus bVirus;
+	private RedVirus rVirus;
+	private GreenVirus gVirus;
+	private BossScript boss;
+	
+	private float stunTimer;
+	bool stunned;
+	
 	// Use this for initialization
 	void Start () {
 		
@@ -29,6 +37,9 @@ public class Doctor : MonoBehaviour {
 		
 		mMoving = false;
 		mAttacking = false;
+		
+		stunTimer = 0.0f;
+		stunned = false;
 		
 		mMaterial = renderer.material;
 		
@@ -55,11 +66,22 @@ public class Doctor : MonoBehaviour {
 		mAnimator.CreateAnimation("Gun Up", 23, 23, 0.3);
 		
 		mAnimator.PlayAnimation("Standing Right", false);
+		mOrientation = Orientation.RIGHT;
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
+		if(stunned)
+		{
+			stunTimer += Time.deltaTime;
+			if(stunTimer > 2.0f)
+			{
+				stunTimer = 0.0f;
+				stunned = false;
+			}else return;
+		}
 		
 		rigidbody.velocity = new Vector3(0,0,0);
 		
@@ -148,7 +170,7 @@ public class Doctor : MonoBehaviour {
 					
 				}
 				
-				evt.AddParam(1); //add attack damage
+				evt.AddParam(2); //add attack damage
 				eventMan.PostEvent(evt);
 				
 				
@@ -157,7 +179,7 @@ public class Doctor : MonoBehaviour {
 				GameObject lazer; 
 				if(mOrientation == Orientation.LEFT){
 					mAnimator.PlayAnimation("Gun Left", false);
-					lazer = Instantiate(LaserBeam, new Vector3(transform.position.x - 50,transform.position.y,7.2f), transform.rotation) as GameObject;
+					lazer = Instantiate(LaserBeam, new Vector3(transform.position.x - 60,transform.position.y,7.2f), transform.rotation) as GameObject;
 					LazerBeam script = lazer.GetComponent("LazerBeam") as LazerBeam;
 					lazer.transform.localEulerAngles = new Vector3(0,0,-90);
 					script.setDirection(Vector3.down);
@@ -165,7 +187,7 @@ public class Doctor : MonoBehaviour {
 				}	
 				else if(mOrientation == Orientation.RIGHT){
 					mAnimator.PlayAnimation("Gun Right", false);
-					lazer = Instantiate(LaserBeam, new Vector3(transform.position.x + 50,transform.position.y,7.2f), transform.rotation) as GameObject;
+					lazer = Instantiate(LaserBeam, new Vector3(transform.position.x + 60,transform.position.y,7.2f), transform.rotation) as GameObject;
 					LazerBeam script = lazer.GetComponent("LazerBeam") as LazerBeam;
 					lazer.transform.localEulerAngles = new Vector3(0,0,90);
 					script.setDirection(Vector3.down);
@@ -173,7 +195,7 @@ public class Doctor : MonoBehaviour {
 				}	
 				else if(mOrientation == Orientation.UP){
 					mAnimator.PlayAnimation("Gun Up", false);
-					lazer = Instantiate(LaserBeam, new Vector3(transform.position.x,transform.position.y + 50,7.2f), transform.rotation) as GameObject;
+					lazer = Instantiate(LaserBeam, new Vector3(transform.position.x,transform.position.y + 60,7.2f), transform.rotation) as GameObject;
 					LazerBeam script = lazer.GetComponent("LazerBeam") as LazerBeam;
 					lazer.transform.localEulerAngles = new Vector3(0,0,180);
 					script.setDirection(Vector3.down);
@@ -181,7 +203,7 @@ public class Doctor : MonoBehaviour {
 				}
 				else if(mOrientation == Orientation.DOWN){
 					mAnimator.PlayAnimation("Gun Down", false);
-					lazer = Instantiate(LaserBeam, new Vector3(transform.position.x,transform.position.y - 50,7.2f), transform.rotation) as GameObject;
+					lazer = Instantiate(LaserBeam, new Vector3(transform.position.x,transform.position.y - 70,7.2f), transform.rotation) as GameObject;
 					LazerBeam script = lazer.GetComponent("LazerBeam") as LazerBeam;
 					script.setDirection(Vector3.down);
 				}
@@ -200,6 +222,31 @@ public class Doctor : MonoBehaviour {
 		
 		mAnimator.Update(Time.deltaTime);
 		
+	}
+	
+	void OnCollisionEnter(Collision col)
+	{
+		if(col.gameObject.name == "BlueVirus")
+		{
+			bVirus = col.gameObject.GetComponent<BlueVirus>();
+			if(bVirus.alive == true)
+				stunned = true;
+		}else if(col.gameObject.name == "GreenVirus")
+		{
+			gVirus = col.gameObject.GetComponent<GreenVirus>();
+			if(gVirus.alive == true)
+				stunned = true;
+		}else if(col.gameObject.name == "RedVirus")
+		{
+			rVirus = col.gameObject.GetComponent<RedVirus>();
+			if(rVirus.alive == true)
+				stunned = true;
+		}else if(col.gameObject.name == "Boss")
+		{
+			boss = col.gameObject.GetComponent<BossScript>();
+			if(boss.alive == true)
+				stunned = true;
+		}
 	}
 	
 	void RecieveEvent(CustomEvent evt)

@@ -12,6 +12,7 @@ public class LazerBeam : MonoBehaviour {
 	public RedVirus rVirus;
 	public BlueVirus bVirus;
 	public GreenVirus gVirus;
+	public BossScript boss;
 	
 	private Transform trans;
 	
@@ -41,28 +42,28 @@ public class LazerBeam : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter(Collision col){
-		Debug.Log ("IMA FIREING MY LAZER12");
+		
 		if (col.gameObject.name == "Wall")
 		{
-			Debug.Log ("IMA FIREING MY LAZER");
 			Destroy (gameObject);
 				
 		}
 		else if (col.gameObject.name == "BlueVirus"){
-			Debug.Log ("IMA FIREING MY Blue");
 			bVirus = col.gameObject.GetComponent<BlueVirus>();
 			bVirus.takeDamage (1,1);
 			Destroy (gameObject);
 		}
 		else if (col.gameObject.name == "RedVirus"){
-			Debug.Log ("IMA FIREING MY red");
 			Destroy (gameObject);
 		}
 		else if (col.gameObject.name == "GreenVirus"){
-			Debug.Log ("IMA FIREING MY green");
 			gVirus = col.gameObject.GetComponent<GreenVirus>();
 			gVirus.takeDamage (1,1);
 			Destroy (gameObject);
+		}else if(col.gameObject.name == "Boss"){
+			boss = col.gameObject.GetComponent<BossScript>();
+			boss.takeDamage(1, 1);
+			Destroy(gameObject);
 		}
 	}
 	

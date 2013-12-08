@@ -195,7 +195,6 @@ public class BlueVirus : MonoBehaviour {
 	{
 		if(evt.GetEventName() == "Sword Attack")
 		{
-			Debug.Log ("SLASH blue");
 			int evtX, evtY, x, y;
 			evtX = evt.GetParam(0);
 			evtY = evt.GetParam(1);
@@ -204,13 +203,10 @@ public class BlueVirus : MonoBehaviour {
 			
 			float distance = Vector3.Distance(transform.position, new Vector3(evtX, evtY, 0.0f));
 			
-			if(distance < 28.0f)
+			if(distance < 40.0f)
 			{
 				this.takeDamage(/*(int)ATTACK_TYPE.MELEE*/0, evt.GetParam(2));
 			}
-		}else if(evt.GetEventName() == "Spread")
-		{
-			
 		}
 	}
 }
